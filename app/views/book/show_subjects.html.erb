@@ -3,6 +3,7 @@
 <ul>
    <% @subject.books.each do |c| %>
    <li><%= link_to c.title, :action => "show", :id => c.id -%></li>
-   <%= link_to 'Back', {:action => 'list'} %>
    <% end %>
+   <br>
+   <%= link_to 'Back', {:action => 'list'} %>
 </ul>
