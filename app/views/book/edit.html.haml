@@ -1,0 +1,23 @@
+%h1 Edit Book Detail
+
+= form_for @book, :url =>{:action => "update", :id =>@book} do |f|
+    .row
+        %p 
+            Title: 
+            = f.text_field 'title'
+    .row
+        %p 
+            Price: 
+            = f.text_field 'price'
+    .row
+        %p 
+            Subject: 
+            = f.collection_select :subject_id, Subject.all, :id, :name
+    %p
+        Description:  
+        %br
+        = f.text_area 'description'
+        
+    = f.submit "Save changes"
+    %br
+    = link_to 'Back', {:action => 'list'}

@@ -1,0 +1,11 @@
+%h1= @subject.name
+%ul
+  - @subject.books.each do |c|
+    %p
+    %li
+      = link_to c.title, :action => "show", :id => c.id
+      %b= link_to 'Edit', {:action => "edit", :id => c.id}
+  %br/
+  = link_to 'Back', {:action => 'list'}
+  %br/
+  %p= link_to "Add New Book", {:action => 'new' }

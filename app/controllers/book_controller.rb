@@ -24,6 +24,9 @@ class BookController < ApplicationController
   
         if @book.save
            redirect_to :action => 'list'
+#Allow for empty subject
+        # elsif @book.subject==false
+        #     @book.subject_id="Physics"
         else
            @subjects = Subject.all
            flash[:errors] = @book.errors.full_messages

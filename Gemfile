@@ -30,7 +30,10 @@ gem 'pg'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-
+#used in place of ERB files
+gem 'haml'
+#Easy erb to HAML
+gem "haml-rails", "~> 2.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

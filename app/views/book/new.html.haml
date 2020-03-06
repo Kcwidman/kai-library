@@ -1,0 +1,28 @@
+- if @book.errors.any?
+  #error_explanation
+    %h2
+      = pluralize(@book.errors.count, "error")
+      prohibited this book from being saved:
+    %ul
+      - @book.errors.full_messages.each do |msg|
+        %li= msg
+%h1 Add new book
+= form_tag :action => 'create' do
+  %p
+    %label{:for => "book_title"}> Title
+    \:
+    = text_field 'books', 'title'
+  %p
+    %label{:for => "book_price"}> Price
+    \:
+    = text_field 'books', 'price'
+  %p
+    %label{:for => "book_subject_id"}> Subject
+    \:
+    = collection_select(:books, :subject_id, @subjects, :id, :name, prompt: true)
+  %p
+    %label{:for => "book_description"} Description
+    %br/
+    = text_area 'books', 'description'
+  = submit_tag "Create"
+= link_to 'Back', {:action => 'list'}
