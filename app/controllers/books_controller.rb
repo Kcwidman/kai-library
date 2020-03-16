@@ -23,7 +23,7 @@ class BooksController < ApplicationController
         @book = Book.new(book_params)
 #Allow for empty subject, default to Physics
         if @book.subject.nil?
-           @book.subject_id=Subject.where(name: "Physics").first.id
+           @book.subject_id=5#default to Geography if no subject is given
         end
         if @book.save
            redirect_to books_path

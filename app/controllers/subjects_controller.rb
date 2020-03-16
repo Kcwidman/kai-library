@@ -1,6 +1,6 @@
 class SubjectsController < ApplicationController
 
-    layout 'standard'
+    # layout 'standard'
     
 
     def show
