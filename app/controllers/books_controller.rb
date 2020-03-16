@@ -1,8 +1,8 @@
-class BookController < ApplicationController
+class BooksController < ApplicationController
 
     layout 'standard'
     
-    def list
+    def index
         @books=Book.all
     end
 
@@ -17,22 +17,22 @@ class BookController < ApplicationController
 
     def book_params
         params.require(:books).permit(:title, :price, :subject_id, :description)
-     end
+    end
   
-     def create
+    def create
         @book = Book.new(book_params)
-  
+#Allow for empty subject, default to Physics
+        if @book.subject.nil?
+           @book.subject_id=Subject.where(name: "Physics").first.id
+        end
         if @book.save
-           redirect_to :action => 'list'
-#Allow for empty subject
-        # elsif @book.subject==false
-        #     @book.subject_id="Physics"
+           redirect_to books_path
         else
            @subjects = Subject.all
            flash[:errors] = @book.errors.full_messages
            render :action => 'new'
         end
-     end
+    end
 
     def edit
         @book=Book.find(params[:id])
@@ -57,7 +57,7 @@ class BookController < ApplicationController
 
     def delete
         Book.find(params[:id]).destroy
-        redirect_to :action => 'list'
+        redirect_to :action => 'index'
     end
 
     def show_subjects

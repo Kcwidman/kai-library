@@ -1,0 +1,17 @@
+%ul#subjects
+  - Subject.all.each do |c|
+    %li= link_to c.name, subject_path(c)
+- if @books.blank?
+  %p There are not any books currently in the system.
+- else
+  %p These are the current books in our system
+  %ul#books
+    - @books.each do |c|
+      %li
+        = link_to c.title, book_path(c)
+        %b
+          = link_to 'Edit', edit_book_path(c)
+        %b
+          -# = link_to "Delete", {:action => 'delete', :id => c.id}
+          = link_to 'Delete', book_path(c), method: :destroy, data: {confirm: "Are you sure?" }
+%p= link_to "Add New Book", new_book_path
