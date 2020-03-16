@@ -4,11 +4,11 @@ class Subjects < ActiveRecord::Migration[6.0]
       t.column :name, :string
     end
 
-    Subject.create :name => "Physics"
-    Subject.create :name => "Mathematics"
-    Subject.create :name => "Chemistry"
-    Subject.create :name => "Psychology"
-    Subject.create :name => "Geograpy"
+    Subject.create name: "Physics"
+    Subject.create name: "Mathematics"
+    Subject.create name: "Chemistry"
+    Subject.create name: "Psychology"
+    Subject.create name: "Geograpy"
   end
 
   def self.down

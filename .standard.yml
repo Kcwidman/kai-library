@@ -1,0 +1,13 @@
+format: progress        # default: Standard::Formatter
+default_ignores: false  # default: true
+
+ignore:                 # default: []
+  - 'db/schema.rb'
+  - 'vendor/**/*'
+  - 'tmp/**/*'
+  - 'public/**/*'
+  - 'node_modules/**/*'
+  - 'log/**/*'
+  - 'docs/**/*'
+  - 'bin/**/*'
+  - 'storage/**/*'
