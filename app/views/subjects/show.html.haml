@@ -1,0 +1,10 @@
+%h1= @subject.name
+%ul
+  - @subject.books.each do |c|
+    %p
+    %li
+      = link_to c.title, book_path(c)
+      %b= link_to 'Edit', edit_book_path(c)
+      %b= link_to 'Delete', book_path(c), method: :delete, data: {confirm: "Are you sure?" }
+  %p= link_to "Add New Book", new_book_path
+  = link_to 'Back', books_path
