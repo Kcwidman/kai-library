@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
 
-    layout 'standard'
+    # layout 'standard'
     
     def index
         @books=Book.all
@@ -55,7 +55,7 @@ class BooksController < ApplicationController
 
     end
 
-    def delete
+    def destroy
         Book.find(params[:id]).destroy
         redirect_to :action => 'index'
     end
