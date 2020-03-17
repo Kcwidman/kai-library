@@ -12,6 +12,5 @@ Rails.application.routes.draw do
   # get 'book/update'
 
   # get 'books/show_subjects'
-  root 'books#index'#sets the default page to index
-
+  root "books#index" # sets the default page to index
 end
