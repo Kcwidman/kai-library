@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_02_24_213411) do
 
   create_table "books", force: :cascade do |t|
     t.string "title", limit: 32, null: false
-    t.float "price"
+    t.decimal "price", precision: 8, scale: 2
     t.integer "subject_id"
     t.text "description"
     t.datetime "created_at"

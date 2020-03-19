@@ -1,0 +1,15 @@
+=form_with(model: subject, local: true) do |form|
+    -if subject.errors.any?
+        #error_explaination
+            %h2
+                = pluralize(@subject.errors.count, "error")
+                prohibited this book from being saved:
+            %ul
+                - @subject.errors.full_messages.each do |msg|
+                    %li= msg
+
+    %p
+        = form.label :Subject_Name
+        \:
+        = form.text_field :name
+    =form.submit :Save

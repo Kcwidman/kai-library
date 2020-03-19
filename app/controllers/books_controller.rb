@@ -11,18 +11,16 @@ class BooksController < ApplicationController
     def new
         @book=Book.new
         @subjects=Subject.all
-    end
-
-    def book_params
-#originally was :books
-        params.require(:book).permit(:title, :price, :subject_id, :description)
+        if params[:subject_id]
+            @book.subject_id=params[:subject_id]
+        end
     end
   
     def create
-        @book = Book.new(book_params)
-#Allow for empty subject, default to unknown
+        @book = Book.new(book_param)
+#Allow for empty subject, default to "No Subject"
         if @book.subject.nil?
-           @book.subject_id=6#default to Unkown subject if no subject is given
+           @book.subject_id=6#ID for "No Subject"
         end
         if @book.save
            redirect_to books_path
@@ -55,12 +53,15 @@ class BooksController < ApplicationController
     end
 
     def destroy
-        Book.find(params[:id]).destroy
-        redirect_to :action => 'index'
-    end
-
-    def show_subjects
-        @subject = Subject.find(params[:id])
+        @book=Book.find(params[:id])
+        @book.destroy
+        if params[:path] && params[:path] == "subject_index"
+            redirect_to subjects_path
+        elsif params[:path] && params[:path] == "subject_show"
+            redirect_to subject_path(@book.subject)
+        else
+            redirect_to :action => 'index'
+        end
     end
 
 

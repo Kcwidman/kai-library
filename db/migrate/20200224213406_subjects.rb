@@ -9,7 +9,7 @@ class Subjects < ActiveRecord::Migration[6.0]
     Subject.create :name => "Chemistry"
     Subject.create :name => "Psychology"
     Subject.create :name => "Geography"
-    Subject.create :name => "Unknown"
+    Subject.create :name => "No Subject"
   end
 
   def self.down

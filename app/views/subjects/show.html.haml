@@ -1,10 +1,16 @@
-%h1= @subject.name
+%h1
+  = @subject.name
+  = link_to "Edit", edit_subject_path(@subject)
+  = link_to "Delete", subject_path(@subject), method: :delete, data: {confirm: "Are you sure?"}
 %ul
   - @subject.books.each do |c|
     %p
     %li
       = link_to c.title, book_path(c)
       %b= link_to 'Edit', edit_book_path(c)
-      %b= link_to 'Delete', book_path(c), method: :delete, data: {confirm: "Are you sure?" }
-  %p= link_to "Add New Book", new_book_path
+      %b= link_to 'Delete', book_path(c, path: "subject_show"), method: :delete, data: {confirm: "Are you sure?" }
+%p
+  %br
+  = link_to "Add New Book", new_book_path(subject_id: @subject.id)
+  %br
   = link_to 'Back', books_path

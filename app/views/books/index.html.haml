@@ -1,6 +1,9 @@
+#sub_view 
+  = link_to "Subject view", subjects_path
 %ul#subjects
   - Subject.all.each do |c|
     %li= link_to c.name, subject_path(c)
+  
 - if @books.blank?
   %p There are not any books currently in the system.
 - else

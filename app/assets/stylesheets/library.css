@@ -63,3 +63,19 @@ body {
     display: inline;
     padding-left: 5px;
  }
+
+ div#sub_view
+ {
+    font-size: 20px;
+    text-align: right;
+ }
+
+ div#sub_view_links a
+ {
+    font-size: large;
+ }
+
+ div#sub_view_links a:first-of-type
+ {
+    color: rgb(4, 7, 85);
+ }
