@@ -10,7 +10,6 @@ class BooksController < ApplicationController
 
     def new
         @book=Book.new
-        @subjects=Subject.all
         if params[:subject_id]
             @book.subject_id=params[:subject_id]
         end
@@ -21,7 +20,6 @@ class BooksController < ApplicationController
         if @book.save
            redirect_to books_path
         else
-           @subjects = Subject.all
            flash[:errors] = @book.errors.full_messages
            render :action => 'new'
         end
@@ -29,7 +27,6 @@ class BooksController < ApplicationController
 
     def edit
         @book=Book.find(params[:id])
-        @subjects=Subject.all
     end
 
     def book_param
@@ -42,7 +39,6 @@ class BooksController < ApplicationController
         if @book.update_attributes(book_param)
             redirect_to :action => 'show', :id => @book
         else 
-            @subjects=Subject.all
             render :action => 'edit'
         end
 
