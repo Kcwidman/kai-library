@@ -41,16 +41,7 @@ class SubjectsController < ApplicationController
 
   def destroy
     @subject=Subject.find(params[:id])
-
-    if @subject.id!=6#No Subject ID
-      @subject.books.each do |c|
-        c.update(subject_id: 6)#ID for "No Subject"
-      end
-
-      @subject.destroy
-    else
-      flash[:notice] = "Error: You cannot delete No Subject, but you can rename it."
-    end
+    @subject.destroy
     redirect_to :action => 'index'
   end
 

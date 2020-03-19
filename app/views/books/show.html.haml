@@ -1,12 +1,17 @@
 %h1= @book.title
 %p
   %strong Price:
-  $#{@book.price}
+  -if @book.price
+    $#{@book.price}
+  -else
+    = "\"Priceless\""
   %br/
+  %strong Subject:
   -if @book.subject
-    %strong Subject:
     = link_to @book.subject.name, subject_path(@book.subject)
-    %br/
+  -else
+    = "No Subject"
+  %br/
   %strong Created Date:
   = @book.created_at
   %br/

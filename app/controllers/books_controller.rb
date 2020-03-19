@@ -18,10 +18,6 @@ class BooksController < ApplicationController
   
     def create
         @book = Book.new(book_param)
-#Allow for empty subject, default to "No Subject"
-        if @book.subject.nil?
-           @book.subject_id=6#ID for "No Subject"
-        end
         if @book.save
            redirect_to books_path
         else
@@ -58,7 +54,7 @@ class BooksController < ApplicationController
         if params[:path] && params[:path] == "subject_index"
             redirect_to subjects_path
         elsif params[:path] && params[:path] == "subject_show"
-            redirect_to subject_path(@book.subject)
+            redirect_to subject_path(@book.subject)#If being viewed from a subject show page, then the book has a subject --> this is a safe call
         else
             redirect_to :action => 'index'
         end
