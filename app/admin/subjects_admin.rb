@@ -3,6 +3,11 @@ Trestle.resource(:subjects) do
     item :subjects, icon: "fa fa-star"
   end
 
+  controller do
+    def index
+      @subjects=Subject.all
+    end
+  end
   # Customize the table columns shown on the index view.
   #
   # table do

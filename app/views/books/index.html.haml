@@ -1,5 +1,7 @@
 #sub_view 
   = link_to "Subject view", subjects_path
+  %br/
+  = link_to "Admin page", trestle_path
 %ul#subjects
   - Subject.all.each do |c|
     %li= link_to c.name, subject_path(c)

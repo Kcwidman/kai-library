@@ -1,0 +1,11 @@
+- @subjects.each do |subject|
+    %h1
+        = link_to subject.name, subjects_admin_path(subject)
+        = link_to "Edit", edit_subjects_admin_path(subject)
+        = link_to "Delete", subjects_admin_path(subject), method: :delete, data: {confirm: "Are you sure?"}
+    - subject.books.each do |book|
+        %p
+        %li
+            = link_to book.title, books_admin_path(book)
+            %b= link_to 'Edit', edit_books_admin_path(book)
+            %b= link_to 'Delete', books_admin_path(book, path: "subject_index"), method: :delete, data: {confirm: "Are you sure?"}
