@@ -1,7 +1,6 @@
 class SubjectsController < ApplicationController
-
   def index
-    @subjects=Subject.all
+    @subjects = Subject.all
   end
 
   def show
@@ -9,16 +8,16 @@ class SubjectsController < ApplicationController
   end
 
   def new
-    @subject=Subject.new
+    @subject = Subject.new
   end
 
   def create
-    @subject=Subject.new(subject_param)
+    @subject = Subject.new(subject_param)
     if @subject.save
       redirect_to subjects_path
     else
       flash[:errors] = @subject.errors.full_messages
-      render :action => 'new'
+      render action: "new"
     end
   end
 
@@ -27,23 +26,22 @@ class SubjectsController < ApplicationController
   end
 
   def edit
-    @subject=Subject.find(params[:id])
+    @subject = Subject.find(params[:id])
   end
 
   def update
-    @subject=Subject.find(params[:id])
+    @subject = Subject.find(params[:id])
 
     if @subject.update_attributes(subject_param)
-      redirect_to :action => 'show', :id => @subject
+      redirect_to action: "show", id: @subject
     else
-      render :action => 'edit'
+      render action: "edit"
     end
   end
 
   def destroy
-    @subject=Subject.find(params[:id])
+    @subject = Subject.find(params[:id])
     @subject.destroy
-    redirect_to :action => 'index'
+    redirect_to action: "index"
   end
-
 end

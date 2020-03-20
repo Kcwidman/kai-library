@@ -26,7 +26,7 @@ gem "pg"
 gem "trestle"
 
 # Use devise for authentication
-gem 'devise'
+gem "devise"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

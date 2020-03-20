@@ -5,7 +5,7 @@ Trestle.resource(:subjects) do
 
   controller do
     def index
-      @subjects=Subject.all
+      @subjects = Subject.all
     end
   end
   # Customize the table columns shown on the index view.
