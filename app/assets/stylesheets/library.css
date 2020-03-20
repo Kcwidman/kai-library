@@ -79,3 +79,8 @@ body {
  {
     color: rgb(4, 7, 85);
  }
+
+ div#error_explaination
+ {
+    margin: auto;
+ }

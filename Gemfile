@@ -25,6 +25,9 @@ gem "pg"
 # Use trestle for better scaffolding
 gem "trestle"
 
+# Use devise for authentication
+gem 'devise'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

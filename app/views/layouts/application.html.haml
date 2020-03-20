@@ -11,7 +11,14 @@
     #container
       #header
         %h1 Library Info System
-        %h3 Library powered by Ruby on Rails
+        %h3 
+          Library powered by Ruby on Rails
+          %br/
+          = link_to "Logout", destroy_session_path(:user), method: :delete
+          = link_to "Account", edit_user_registration_path(:user)
       #content
+        #error_explaination
+          - flash.each do |name, msg|
+            %h2= content_tag :div, msg, class: name
         = yield
       #sidebar
