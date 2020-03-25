@@ -1,0 +1,15 @@
+.container
+  .jumbotron
+    %h1 Library Catalog
+  .row
+    .col
+      .card.card-body.text-center
+        %h2.card-title Have you been here before?
+        .btn.btn-primary
+          =link_to "Login", new_user_session_path, :class => "btn"
+    .col
+      .card.card-body.text-center
+        %h2.card-title Are you new?
+        .btn.btn-primary
+          =link_to "Create new account", new_user_registration_path, :class => "btn"
+          

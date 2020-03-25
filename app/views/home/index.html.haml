@@ -1,0 +1,24 @@
+.jumbotron
+  %h1.display-4
+    A library cataloging solution
+  %p.lead
+    Store your books with ease.
+.row
+  .col
+    .card
+      .card-title Most recent books
+      .card-body
+        %ul
+          - @books.each do |book|
+            %li= link_to book.title, book_path(book)
+        .card-link
+          = link_to "View all", books_path
+  .col
+    .card
+      .card-title Most Recent Subjects
+      .card-body
+        %ul
+          - @subjects.each do |subject|
+            %li= link_to subject.name, subject_path(subject)
+        .card-link
+          = link_to "View all", subjects_path

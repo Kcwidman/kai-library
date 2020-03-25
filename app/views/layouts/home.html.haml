@@ -1,0 +1,43 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
+    %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css", :integrity => "sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm", :rel => "stylesheet"}/
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = csrf_meta_tags
+    = csp_meta_tag
+  %body
+    .container
+      %nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+        .navbar-brand Library Info System
+
+        #navbarSupportedContent.collapse.navbar-collapse
+          %ul.navbar-nav.ml-auto
+            %li.nav-item.dropdown
+              %a#navbarDropdown.nav-link.dropdown-toggle.text-light{"data-toggle" => "dropdown", :href => "#"} Catalog
+              .dropdown-menu
+                .dropdown-item 
+                  =link_to "All books", books_path
+                .dropdown-item
+                  =link_to "Subject view", subjects_path
+                .dropdown-item
+                  =link_to "Admin page", trestle_path
+            %li.nav-item
+              = link_to "Logout", destroy_user_session_path, method: :delete, :class => "navbar text-light"
+            %li.nav-item
+              = link_to "Account", edit_user_registration_path, :class => "navbar text-light"
+      .toast
+        .toast-header
+          %strong Notice
+          %button.ml-2.mb-1.close{"aria-label" => "Close", "data-dismiss" => "toast", :type => "button"}
+          %span{"aria-hidden" => "true"}
+        .toast-body
+          - flash.each do |name, msg|
+            %strong= content_tag :div, msg, class: name
+      = yield
+
+    %script{:crossorigin => "anonymous", :integrity => "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", :src => "https://code.jquery.com/jquery-3.2.1.slim.min.js"}
+    %script{:crossorigin => "anonymous", :integrity => "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q", :src => "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"}
+    %script{:crossorigin => "anonymous", :integrity => "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl", :src => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"}
