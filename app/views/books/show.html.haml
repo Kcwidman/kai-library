@@ -1,22 +1,24 @@
-%h1= @book.title
+%h1.my-3.text-center= @book.title
 %p
   %strong Price:
   -if @book.price
     $#{@book.price}
   -else
     = "\"Priceless\""
-  %br/
+  %br
   %strong Subject:
   -if @book.subject
     = link_to @book.subject.name, subject_path(@book.subject)
   -else
     = "No Subject"
-  %br/
+  %br
   %strong Created Date:
   = @book.created_at
-  %br/
+  %br
+%strong Description: 
+%hr
 %p= @book.description
-%hr/
-= link_to 'Back', books_path
-= link_to 'Edit', edit_book_path(@book)
-= link_to 'Delete', book_path(@book), method: :delete, data: {confirm: "Are you sure?"}
+%hr
+.mr-3.btn.btn-sm.btn-primary= link_to 'Back', books_path, :class => "btn text-light"
+.mr-3.btn.btn-sm.btn-primary= link_to 'Edit', edit_book_path(@book), :class => "btn text-light"
+.mr-3.btn.btn-sm.btn-primary= link_to 'Delete', book_path(@book), method: :delete, data: {confirm: "Are you sure?"}, :class => "btn text-light"
