@@ -1,21 +1,23 @@
-#sub_view 
-  = link_to "Subject view", subjects_path
-  %br/
-  = link_to "Admin page", trestle_path
-%ul#subjects
+%h3.text-center.my-3 Subjects:
+%ul.list-group.list-group-horizontal-lg
   - Subject.all.each do |c|
-    %li= link_to c.name, subject_path(c)
-  
+    %li.list-group-item.list-group-item-primary.d-flex.justify-content-between.align-items-center
+      = link_to c.name, subject_path(c), :class => "text-secondary"
+      
+      %span.badge.badge-primary.badge-pill= c.books.count
+
 - if @books.blank?
-  %p There are not any books currently in the system.
+  %p.text-center.my-22 There are not any books currently in the system.
 - else
-  %p These are the current books in our system
-  %ul#books
+  %h3.text-center.my-2 Books: 
+
+  %ul.list-group
     - @books.each do |c|
-      %li
-        = link_to c.title, book_path(c)
-        %b
-          = link_to 'Edit', edit_book_path(c)
-        %b
-          = link_to 'Delete', book_path(c), method: :delete, data: {confirm: "Are you sure?" }
-%p= link_to "Add New Book", new_book_path
+      %li.list-group-item.d-flex
+        .p-2.flex-grow-1= link_to c.title, book_path(c)
+        %b.p-2= link_to 'Edit', edit_book_path(c)
+        %b.p-2= link_to 'Delete', book_path(c), method: :delete, data: {confirm: "Are you sure?" }
+
+.row.text-center
+  .col-12
+    .btn.btn-primary.my-3= link_to "Add New Book", new_book_path, :class=> "btn text-light"
