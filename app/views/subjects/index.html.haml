@@ -1,18 +1,19 @@
-#sub_view=link_to "Create new subject", new_subject_path
-- @subjects.each do |subject|
-    %h1
-        #sub_view_links
-            = link_to subject.name, subject_path(subject)
-            = link_to "Edit", edit_subject_path(subject)
-            = link_to "Delete", subject_path(subject), method: :delete, data: {confirm: "Are you sure?"}
-    - subject.books.each do |book|
-        %p
-        %li
-            = link_to book.title, book_path(book)
-            %b= link_to 'Edit', edit_book_path(book)
-            %b= link_to 'Delete', book_path(book, path: "subject_index"), method: :delete, data: {confirm: "Are you sure?"}
-%p
-    %br
-    = link_to "Add New Book", new_book_path
-    %br
-    = link_to 'Back', books_path
+.row.text-center
+  .col
+    .btn.btn-primary.my-4.text-center=link_to "Create new subject", new_subject_path, :class => "btn text-light"
+
+.row
+  - @subjects.each do |subject|
+    .col-4
+      .mb-3.card.card-body
+        .card-title
+          %strong= link_to subject.name, subject_path(subject)
+        %ul.list-group 
+          - subject.books.each do |book|
+            %li.list-group-item
+              = link_to book.title, book_path(book)
+              %strong.ml-2= link_to 'Edit', edit_book_path(book)
+              %strong.ml-2= link_to 'Delete', book_path(book), method: :delete, data: {confirm: "Are you sure?" }
+.row
+  .col
+    .mr-3.btn.btn-sm.btn-primary= link_to 'Back', books_path, :class => "btn text-light"

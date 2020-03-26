@@ -14,10 +14,10 @@
   %ul.list-group
     - @books.each do |c|
       %li.list-group-item.d-flex
-        .p-2.flex-grow-1= link_to c.title, book_path(c)
-        %b.p-2= link_to 'Edit', edit_book_path(c)
-        %b.p-2= link_to 'Delete', book_path(c), method: :delete, data: {confirm: "Are you sure?" }
+        %strong.p-2.flex-grow-1= link_to c.title, book_path(c)
+        .btn.btn-primary.btn-sm.mx-2= link_to 'Edit', edit_book_path(c), :class => "btn text-light"
+        .btn.btn-primary.btn-sm.mx-2= link_to 'Delete', book_path(c), method: :delete, data: {confirm: "Are you sure?" }, :class => "btn text-light"
 
 .row.text-center
-  .col-12
+  .col
     .btn.btn-primary.my-3= link_to "Add New Book", new_book_path, :class=> "btn text-light"

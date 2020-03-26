@@ -1,16 +1,20 @@
-%h1
-  = @subject.name
-  = link_to "Edit", edit_subject_path(@subject)
-  = link_to "Delete", subject_path(@subject), method: :delete, data: {confirm: "Are you sure?"}
-%ul
+.row.mt-2.mb-3
+  .col-3
+  .col-6.text-center    
+    %h1.my-3.text-center
+      = @subject.name
+  .col-3.text-center.mt-4
+    .btn.btn-primary.btn-sm.mx-2= link_to 'Edit', edit_subject_path(@subject), :class => "btn text-light"
+    .btn.btn-primary.btn-sm.mx-2= link_to 'Delete', subject_path(@subject), method: :delete, data: {confirm: "Are you sure?" }, :class => "btn text-light"
+%ul.list-group
   - @subject.books.each do |c|
-    %p
-    %li
-      = link_to c.title, book_path(c)
-      %b= link_to 'Edit', edit_book_path(c)
-      %b= link_to 'Delete', book_path(c, path: "subject_show"), method: :delete, data: {confirm: "Are you sure?" }
-%p
-  %br
-  = link_to "Add New Book", new_book_path(subject_id: @subject.id)
-  %br
-  = link_to 'Back', books_path
+    %li.list-group-item.d-flex
+      %strong.p-2.flex-grow-1= link_to c.title, book_path(c)
+      .btn.btn-primary.btn-sm.mx-2= link_to 'Edit', edit_book_path(c), :class => "btn text-light"
+      .btn.btn-primary.btn-sm.mx-2= link_to 'Delete', book_path(c), method: :delete, data: {confirm: "Are you sure?" }, :class => "btn text-light"
+.row.text-center
+  .col-1
+    .btn.btn-primary.btn-sm.mt-3= link_to 'Back', books_path, :class => "btn text-light"
+  .col-9
+  .col-2
+    .btn.btn-primary.btn-sm.mt-3= link_to "Add New Book", new_book_path(subject_id: @subject.id), :class => "btn text-light"
