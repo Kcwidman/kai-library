@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_20_171542) do
+ActiveRecord::Schema.define(version: 2020_04_01_184114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,12 @@ ActiveRecord::Schema.define(version: 2020_03_20_171542) do
     t.decimal "price", precision: 8, scale: 2
     t.integer "subject_id"
     t.text "description"
+    t.integer "publisher_id"
     t.datetime "created_at"
+  end
+
+  create_table "publishers", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "subjects", force: :cascade do |t|
