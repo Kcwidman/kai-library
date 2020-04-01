@@ -6,7 +6,7 @@
 .row
   .col
     .card
-      .card-title Most recent books
+      .card-title.text-center.my-2 Most recent books
       .card-body
         %ul
           - @books.each do |book|
@@ -15,7 +15,7 @@
           = link_to "View all", books_path
   .col
     .card
-      .card-title Most Recent Subjects
+      .card-title.text-center.my-2 Most Recent Subjects
       .card-body
         %ul
           - @subjects.each do |subject|
