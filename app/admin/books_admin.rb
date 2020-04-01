@@ -7,7 +7,7 @@ Trestle.resource(:books) do
   #
   table do
     column :title
-    column :subject
+    column :subjects_list
     column :publisher
     column :price
     column :created_at, align: :center
@@ -19,7 +19,7 @@ Trestle.resource(:books) do
   form do |book|
     text_field :title
     text_field :price
-    select :subject_id, Subject.all
+    collection_select :subject_ids, Subject.all, :id, :name, {}, multiple: true
     select :publisher_id, Publisher.all 
     text_area :description
   end

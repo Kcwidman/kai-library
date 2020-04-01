@@ -7,8 +7,11 @@
     = "\"Priceless\""
   %br
   %strong Subject:
-  -if @book.subject
-    = link_to @book.subject.name, subject_path(@book.subject)
+  -# -if @book.subject
+  -#   = link_to @book.subject.name, subject_path(@book.subject)
+  -if @book.subjects.any?
+    - @book.subjects.all.each do |c|
+      = link_to c.name, subject_path(c)
   -else
     = "No Subject"
   %br

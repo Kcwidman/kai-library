@@ -13,7 +13,7 @@ Subject.create name: "Psychology"
 Subject.create name: "Geography"
 
 (1..5).each do |i|
-  Book.create(title: "Book ##{i}", subject_id: i, price: 9.99, description: "From seed", subject_id: "#{i}", publisher_id: "#{i}")
+  Book.create(title: "Book ##{i}", price: 9.99, description: "From seed", subject_ids: [i], publisher_id: "#{i}")
 end
 
 Publisher.create name: "Books R US"

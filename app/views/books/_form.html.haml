@@ -14,7 +14,7 @@
       .form-group
         = form.label :subject
         \:
-        = form.collection_select :subject_id, Subject.all, :id, :name, prompt: true
+        = form.collection_select :subject_ids, Subject.all, :id, :name, {}, multiple: true
   .form-group
     = form.label :description
     \:
