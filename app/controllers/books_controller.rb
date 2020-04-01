@@ -49,8 +49,8 @@ class BooksController < ApplicationController
     @book.destroy
     if params[:path] && params[:path] == "subject_index"
       redirect_to subjects_path
-    elsif params[:path] && params[:path] == "subject_show"
-      redirect_to subject_path(@book.subject) # If being viewed from a subject show page, then the book has a subject --> this is a safe call
+    elsif params[:subject_id]
+      redirect_to subject_path(params[:subject_id]) # If being viewed from a subject show page, then the book has a subject --> this is a safe call
     else
       redirect_to action: "index"
     end

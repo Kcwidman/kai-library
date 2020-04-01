@@ -11,7 +11,7 @@
     %li.list-group-item.d-flex
       %strong.p-2.flex-grow-1= link_to c.title, book_path(c)
       .btn.btn-primary.btn-sm.mx-2= link_to 'Edit', edit_book_path(c), :class => "btn text-light"
-      .btn.btn-primary.btn-sm.mx-2= link_to 'Delete', book_path(c), method: :delete, data: {confirm: "Are you sure?" }, :class => "btn text-light"
+      .btn.btn-primary.btn-sm.mx-2= link_to 'Delete', book_path(c, subject_id: @subject.id), method: :delete, data: {confirm: "Are you sure?" }, :class => "btn text-light"
 .row.text-center
   .col-1
     .btn.btn-primary.btn-sm.mt-3= link_to 'Back', books_path, :class => "btn text-light"
