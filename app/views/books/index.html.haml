@@ -1,5 +1,5 @@
 %h3.text-center.my-3 Subjects:
-%ul.list-group.list-group-horizontal-lg
+%ul.list-group.list-group-horizontal
   - Subject.all.each do |c|
     %li.list-group-item.list-group-item-primary.d-flex.justify-content-between.align-items-center
       = link_to c.name, subject_path(c), :class => "text-secondary"
@@ -7,17 +7,23 @@
       %span.badge.badge-primary.badge-pill= c.books.count
 
 - if @books.blank?
-  %p.text-center.my-22 There are not any books currently in the system.
+  %h5.text-center.mt-4 There are not any books currently in the system.
 - else
   %h3.text-center.my-2 Books: 
 
   %ul.list-group
     - @books.each do |c|
       %li.list-group-item.d-flex
-        %strong.p-2.flex-grow-1= link_to c.title, book_path(c)
+        %strong.mr-auto.p-2= link_to c.title, book_path(c)
         .btn.btn-primary.btn-sm.mx-2= link_to 'Edit', edit_book_path(c), :class => "btn text-light"
         .btn.btn-primary.btn-sm.mx-2= link_to 'Delete', book_path(c), method: :delete, data: {confirm: "Are you sure?" }, :class => "btn text-light"
 
 .row.text-center
   .col
     .btn.btn-primary.my-3= link_to "Add New Book", new_book_path, :class=> "btn text-light"
+
+-# list-group-horizontal test    
+%ul.list-group.list-group-horizontal
+  %li.list-group-item Cras justo odio
+  %li.list-group-item Dapibus ac facilisis in
+  %li.list-group-item Morbi leo risus
