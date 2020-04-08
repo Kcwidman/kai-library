@@ -13,7 +13,7 @@
 
   %ul.list-group
     - @books.each do |c|
-      %li.list-group-item.d-flex
+      %li.list-group-item.d-flex.text-center
         %strong.mr-auto.p-2= link_to c.title, book_path(c)
         = link_to 'Edit', edit_book_path(c), :class => "btn btn-primary btn-sm text-light mx-2"
         = link_to 'Delete', book_path(c), method: :delete, data: {confirm: "Are you sure?" }, :class => "btn btn-primary btn-sm text-light mx-2"
@@ -21,9 +21,3 @@
 .row.text-center
   .col
     .btn.btn-primary.my-3= link_to "Add New Book", new_book_path, :class=> "btn text-light"
-
--# list-group-horizontal test    
-%ul.list-group.list-group-horizontal
-  %li.list-group-item Cras justo odio
-  %li.list-group-item Dapibus ac facilisis in
-  %li.list-group-item Morbi leo risus

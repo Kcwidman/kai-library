@@ -29,12 +29,8 @@
               = link_to "Logout", destroy_user_session_path, method: :delete, :class => "navbar text-light"
             %li.nav-item
               = link_to "Account", edit_user_registration_path, :class => "navbar text-light"
-      .toast{"aria-atomic" => "true", "aria-live" => "assertive", :role => "alert"}
-        -# .toast-header
-        -#   %strong Notice
-        -#   %button.ml-2.mb-1.close{"aria-label" => "Close", "data-dismiss" => "toast", :type => "button"}
-        -#   %span{"aria-hidden" => "true"}
-        .toast-body.text-danger
-          - flash.each do |name, msg|
-            %strong= content_tag :div, msg, class: name
+      .text-danger.text-center
+        - flash.each do |name, msg|
+          %strong= content_tag :div, msg, class: name
+
       = yield

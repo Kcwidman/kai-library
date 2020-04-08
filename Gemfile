@@ -28,8 +28,6 @@ gem "trestle"
 # Use devise for authentication
 gem "devise"
 
-# Use bootstrap for homepage
-gem 'bootstrap', '~> 4.4.1'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
