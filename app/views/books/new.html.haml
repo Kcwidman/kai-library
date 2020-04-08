@@ -1,4 +1,6 @@
-%h1 New Book Entry
+%h3.text-center.my-3 New Book Entry
 
-= render 'form', book: @book
-= link_to 'Back', books_path
+.row.text-center
+  .mx-auto.col-8
+    = render 'form', book: @book
+    = link_to 'Back', books_path, :class => "btn btn-primary btn-sm text-light my-3"

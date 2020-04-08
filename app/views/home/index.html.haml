@@ -1,0 +1,24 @@
+.jumbotron
+  %h1.display-4
+    A library cataloging solution
+  %p.lead
+    Store your books with ease.
+.row
+  .col
+    .card
+      .card-title.text-center.my-2 Most recent books
+      .card-body
+        %ul.list-group
+          - @books.each do |book|
+            %li.list-group-item= link_to book.title, book_path(book)
+        .card-link.text-center.mt-2
+          = link_to "View all", books_path, :class => "btn btn-primary"
+  .col
+    .card
+      .card-title.text-center.my-2 Most Recent Subjects
+      .card-body
+        %ul.list-group
+          - @subjects.each do |subject|
+            %li.list-group-item= link_to subject.name, subject_path(subject)
+        .card-link.text-center.mt-2
+          = link_to "View all", subjects_path, :class => "btn btn-primary"

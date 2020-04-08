@@ -1,4 +1,6 @@
-%h1 New Subject
+%h3.text-center.mb-5.mt-3 New Subject
 
-= render "form", subject: @subject
-= link_to "Back", subjects_path
+.row.text-center
+  .mx-auto.col-8
+    = render 'form', subject: @subject
+= link_to 'Back', subjects_path, :class => "btn btn-primary btn-sm text-light my-3"
