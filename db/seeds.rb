@@ -6,14 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Subject.create name: "Physics"
-Subject.create name: "Mathematics"
-Subject.create name: "Chemistry"
-Subject.create name: "Psychology"
-Subject.create name: "Geography"
+subjects = [
+  Subject.create(name: "Physics"),
+  Subject.create(name: "Mathematics"),
+  Subject.create(name: "Chemistry"),
+  Subject.create(name: "Psychology"),
+  Subject.create(name: "Geography")
+]
 
 (1..5).each do |i|
-  Book.create(title: "Book ##{i}", price: 9.99, description: "From seed", subject_ids: [i], publisher_id: "#{i}")
+  Book.create(title: "Book ##{i}", price: 9.99, description: "From seed", subjects: [subjects[i-1]], publisher_id: "#{i}")
 end
 
 Publisher.create name: "Books R US"
@@ -21,3 +23,8 @@ Publisher.create name: "Penguin Books"
 Publisher.create name: "Pearson"
 Publisher.create name: "Ascend Books"
 Publisher.create name: "Scholastic Corporation"
+
+Library.create name: "JOCO Library", location: "Overland Park, KS"
+Library.create name: "Fountain Hill Library", location: "Phoenix, AZ"
+Library.create name: "Indian Creek Library", location: "Olathe, KS"
+

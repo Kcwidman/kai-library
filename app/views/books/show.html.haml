@@ -6,9 +6,7 @@
   -else
     = "\"Priceless\""
   %br
-  %strong Subject:
-  -# -if @book.subject
-  -#   = link_to @book.subject.name, subject_path(@book.subject)
+  %strong Subjects:
   -if @book.subjects.any?
     - @book.subjects.all.each do |c|
       = link_to c.name, subject_path(c)
@@ -22,6 +20,18 @@
 %hr
 %p= @book.description
 %hr
-= link_to 'Back', books_path, :class => "btn btn-primary btn-sm text-light mr-3"
-= link_to 'Edit', edit_book_path(@book), :class => "btn btn-primary btn-sm text-light mr-3"
-= link_to 'Delete', book_path(@book), method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-primary btn-sm text-light mr-3"
+
+%strong Copies in the system: 
+= @book.copies.count
+%br
+%strong Libraries with this book: 
+- @book.libraries.each do |c|
+  %li
+    =c.name
+    -# -if c.copies.where("book_id = @book.id AND checked_out = true")
+    -#   %strong X
+
+.mt-4
+  = link_to 'Back', books_path, :class => "btn btn-primary btn-sm text-light mr-3"
+  = link_to 'Edit', edit_book_path(@book), :class => "btn btn-primary btn-sm text-light mr-3"
+  = link_to 'Delete', book_path(@book), method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-primary btn-sm text-light mr-3"
