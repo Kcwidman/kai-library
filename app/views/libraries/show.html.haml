@@ -1,0 +1,14 @@
+.row.mt-2.mb-3
+  .col-3
+  .col-6.text-center    
+    %h1.my-3.text-center
+      = @library.name
+.row.m-4
+  %h2 Libary Stock:
+%ul.list-group
+  - @library.books.distinct.each do |c|
+    %li.list-group-item.d-flex
+      %strong.p-2.flex-grow-1= link_to c.title, book_path(c)
+.row.text-center
+  .col-1
+    = link_to 'Back', books_path, :class => "btn btn-primary btn-sm text-light mt-3"

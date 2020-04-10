@@ -22,3 +22,18 @@
             %li.list-group-item= link_to subject.name, subject_path(subject)
         .card-link.text-center.mt-2
           = link_to "View all", subjects_path, :class => "btn btn-primary"
+.row.mt-4
+  .col
+    .card
+      .card-title.text-center.my-2 Most Recent Publishers
+      .card-body
+        %ul.list-group
+          - @publishers.each do |c|
+            %li.list-group-item= link_to c.name, publisher_path(c)
+  .col
+    .card
+      .card-title.text-center.my-2 Newest Libraries
+      .card-body
+        %ul.list-group
+          - @libraries.each do |c|
+            %li.list-group-item= link_to c.name, library_path(c)
