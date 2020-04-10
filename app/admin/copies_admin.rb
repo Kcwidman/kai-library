@@ -3,11 +3,19 @@ Trestle.resource(:copies) do
     item :copies, icon: "fa fa-star"
   end
 
+  search do |query|
+    if query
+      Copy.where("condition ILIKE ?", "%#{query}%")
+    else
+      Copy.all
+    end
+  end
   # Customize the table columns shown on the index view.
   #
   table do
     column :condition
     column :checked_out
+    column :book_id
     column :book
     column :library
     actions

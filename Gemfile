@@ -42,6 +42,9 @@ gem "haml-rails", "~> 2.0"
 #used for populating database
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
+#used to give Trestle admin pages search functionality
+gem 'trestle-search'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

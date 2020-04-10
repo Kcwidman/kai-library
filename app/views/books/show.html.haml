@@ -30,8 +30,8 @@
     %li
       =c.name
       \:
-      -if c.copies.where(book_id: @book.id, checked_out: false)
-        =pluralize(c.copies.where(book_id: @book.id, checked_out: false).count , "copy")
+      -if c.copies.where("book_id = ? AND checked_out = ?", @book.id, false)
+        =pluralize(c.copies.where("book_id = ? AND checked_out = ?", @book.id, false).count , "copy")
         in stock
         
 -else

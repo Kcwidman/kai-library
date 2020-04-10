@@ -3,6 +3,13 @@ Trestle.resource(:publishers) do
     item :publishers, icon: "fa fa-star"
   end
 
+  search do |query|
+    if query
+      Publisher.where("name ILIKE ?", "%#{query}%")
+    else
+      Publisher.all
+    end
+  end
   # Customize the table columns shown on the index view.
   #
   # table do

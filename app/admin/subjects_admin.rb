@@ -4,7 +4,14 @@ Trestle.resource(:subjects) do
   end
 
   # Customize the table columns shown on the index view.
-  
+  search do |query|
+    if query
+      Subject.where("name ILIKE ?", "%#{query}%")
+    else
+      Subject.all
+    end
+  end
+
   table do
     column :name
     actions

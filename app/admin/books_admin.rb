@@ -3,6 +3,14 @@ Trestle.resource(:books) do
     item :books, icon: "fa fa-star"
   end
 
+  search do |query|
+    if query
+      Book.where("title ILIKE ?", "%#{query}%")
+    else
+      Book.all
+    end
+  end
+
   # Customize the table columns shown on the index view.
   #
   table do
