@@ -15,8 +15,8 @@ Trestle.resource(:books) do
   #
   table do
     column :title
-    column :subjects_list
-    column :publisher
+    column :subjects_list, sort: false
+    column :publisher, sort: false
     column :price
     column :created_at, align: :center
     actions

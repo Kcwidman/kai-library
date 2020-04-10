@@ -5,7 +5,7 @@ Trestle.resource(:copies) do
 
   search do |query|
     if query
-      Copy.where("condition ILIKE ?", "%#{query}%")
+      Copy.joins(:book).where("books.title ILIKE ?", "%#{query}%")
     else
       Copy.all
     end
@@ -15,9 +15,8 @@ Trestle.resource(:copies) do
   table do
     column :condition
     column :checked_out
-    column :book_id
-    column :book
-    column :library
+    column :book, sort: false
+    column :library, sort: false
     actions
   end
 

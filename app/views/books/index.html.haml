@@ -5,39 +5,19 @@
       = link_to c.name, subject_path(c), :class => "text-secondary"
       %span.badge.badge-primary.badge-pill.ml-3= c.books.count
 
-- if Book.all.count == 0
-  %h5.text-center.mt-4 There are not any books currently in the system.
-- else
-  %h3.my-2 Books: 
-  =search_form_for @q do |f|
-    .form-group
-      =f.search_field :title_cont
-      =f.submit
-  %ul.list-group
-    - @books.each do |c|
-      %li.list-group-item.d-flex.text-center
-        %strong.mr-auto.p-2= link_to c.title, book_path(c)
-        = link_to 'Edit', edit_book_path(c), :class => "btn btn-primary btn-sm text-light mx-2"
-        = link_to 'Delete', book_path(c), method: :delete, data: {confirm: "Are you sure?" }, :class => "btn btn-primary btn-sm text-light mx-2"
+%h3.my-2 Books: 
+=search_form_for @q do |f|
+  .form-group.row
+    .col
+      =f.search_field :title_cont, :class => "form-control"
+    .col
+      =f.submit :class => "btn btn-primary btn-sm"
+- if @books.empty?
+  %h5.text-center.mt-4 There are not any books to display.
 
-.row.text-center
-  .col
-    .btn.btn-primary.my-3= link_to "Add New Book", new_book_path, :class=> "btn text-light"
-
-
--# <%= search_form_for @q do |f| %>
-
--#   # Search if the name field contains...
--#   <%= f.label :name_cont %>
--#   <%= f.search_field :name_cont %>
-
--#   # Search if an associated articles.title starts with...
--#   <%= f.label :articles_title_start %>
--#   <%= f.search_field :articles_title_start %>
-
--#   # Attributes may be chained. Search multiple attributes for one value...
--#   <%= f.label :name_or_description_or_email_or_articles_title_cont %>
--#   <%= f.search_field :name_or_description_or_email_or_articles_title_cont %>
-
--#   <%= f.submit %>
--# <% end %>
+%ul.list-group
+  - @books.each do |c|
+    %li.list-group-item.d-flex.text-center
+      %strong.mr-auto.p-2= link_to c.title, book_path(c)
+      = link_to 'Edit', edit_book_path(c), :class => "btn btn-primary btn-sm text-light mx-2"
+      = link_to 'Delete', book_path(c), method: :delete, data: {confirm: "Are you sure?" }, :class => "btn btn-primary btn-sm text-light mx-2"
