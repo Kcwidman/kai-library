@@ -26,15 +26,16 @@
 %br
 %strong Libraries with this book: 
 -if @book.libraries.any?
-  - @book.libraries.each do |c|
+  - @book.libraries.distinct.each do |c|
     %li
       =c.name
-      -# -if c.copies.where("book_id = @book.id AND checked_out = false")
-      -#   -c.copies.where("book_id = @book.id AND checked_out = false").count
-      -#   copies in stock
+      \:
+      -if c.copies.where(book_id: @book.id, checked_out: false)
+        =pluralize(c.copies.where(book_id: @book.id, checked_out: false).count , "copy")
+        in stock
         
 -else
-  None
+  None in stock
 .mt-4
   = link_to 'Back', books_path, :class => "btn btn-primary btn-sm text-light mr-3"
   = link_to 'Edit', edit_book_path(@book), :class => "btn btn-primary btn-sm text-light mr-3"
