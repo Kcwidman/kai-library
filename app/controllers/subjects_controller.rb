@@ -1,6 +1,7 @@
 class SubjectsController < ApplicationController
   def index
-    @subjects = Subject.all
+    @q = Subject.ransack(params[:q])
+    @subjects = @q.result(distinct: true)
   end
 
   def show

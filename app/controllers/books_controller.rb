@@ -1,8 +1,9 @@
 class BooksController < ApplicationController
   
   def index
-    @books = Book.all
     @books_count = Book.count
+    @q = Book.ransack(params[:q])
+    @books = @q.result(distinct: true)
   end
 
   def show

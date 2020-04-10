@@ -17,12 +17,6 @@
         #navbarSupportedContent.collapse.navbar-collapse
           %ul.navbar-nav.ml-auto
             %li.nav-item.dropdown
-              %a#navbarDropdown.nav-link.dropdown-toggle.text-light{"data-toggle" => "dropdown", :href => "#"} Libraries
-              .dropdown-menu
-                -Library.all.each do |c|
-                  .dropdown-item
-                    =link_to c.name, library_path(c)
-            %li.nav-item.dropdown
               %a#navbarDropdown.nav-link.dropdown-toggle.text-light{"data-toggle" => "dropdown", :href => "#"} Catalog
               .dropdown-menu
                 .dropdown-item 
@@ -31,6 +25,12 @@
                   =link_to "Subject view", subjects_path
                 .dropdown-item
                   =link_to "Admin page", trestle_path
+            %li.nav-item.dropdown
+              %a#navbarDropdown.nav-link.dropdown-toggle.text-light{"data-toggle" => "dropdown", :href => "#"} Libraries
+              .dropdown-menu
+                -Library.all.each do |c|
+                  .dropdown-item
+                    =link_to c.name, library_path(c)
             %li.nav-item.dropdown
               %a#navbarDropdown.nav-link.dropdown-toggle.text-light{"data-toggle" => "dropdown", :href => "#"} Publishers
               .dropdown-menu

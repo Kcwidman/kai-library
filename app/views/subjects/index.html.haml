@@ -1,14 +1,20 @@
-.row.text-center
+.row
+  .col.mt-4
+    =search_form_for @q do |f|
+      .form-group
+        =f.label :subject_search
+        \:
+        =f.search_field :name_cont
+        =f.submit
   .col
-    .btn.btn-primary.my-4.text-center=link_to "Create new subject", new_subject_path, :class => "btn text-light"
-
+    =link_to "Create new subject", new_subject_path, :class => "btn btn-primary my-4 text-center text-light text-right"
 .row
   - @subjects.each do |subject|
     .col-4
       .mb-3.card.card-body.border.border-primary
         .card-title
           %strong= link_to subject.name, subject_path(subject)
-        %ul.list-group 
+        %ul.list-group.text-secondary
           - subject.books.each do |book|
             %li.list-group-item
               = link_to book.title, book_path(book)
