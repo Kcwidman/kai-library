@@ -5,7 +5,6 @@ class Books < ActiveRecord::Migration[6.0]
       t.column :price, :decimal, precision: 8, scale: 2
       t.column :subject_id, :integer
       t.column :description, :text
-      t.column :publisher_id, :integer
       t.column :created_at, :timestamp
     end
   end

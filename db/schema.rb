@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_08_163227) do
+ActiveRecord::Schema.define(version: 2020_04_10_162811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(version: 2020_04_08_163227) do
     t.decimal "price", precision: 8, scale: 2
     t.integer "subject_id"
     t.text "description"
-    t.integer "publisher_id"
     t.datetime "created_at"
+    t.bigint "publisher_id"
+    t.index ["publisher_id"], name: "index_books_on_publisher_id"
   end
 
   create_table "books_subjects", id: false, force: :cascade do |t|

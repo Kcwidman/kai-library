@@ -14,15 +14,19 @@ subjects = [
   Subject.create(name: "Geography")
 ]
 
+publishers = [
+  Publisher.create(name: "Books R US"),
+  Publisher.create(name: "Penguin Books"),
+  Publisher.create(name: "Pearson"),
+  Publisher.create(name: "Ascend Books"),
+  Publisher.create(name: "Scholastic Corporation")
+]
+
 (1..5).each do |i|
-  Book.create(title: "Book ##{i}", price: 9.99, description: "From seed", subjects: [subjects[i-1]], publisher_id: "#{i}")
+  Book.create(title: "Book ##{i}", price: 9.99, description: "From seed", subjects: [subjects[i-1]], publisher_id: [publishers[i-1]])
 end
 
-Publisher.create name: "Books R US"
-Publisher.create name: "Penguin Books"
-Publisher.create name: "Pearson"
-Publisher.create name: "Ascend Books"
-Publisher.create name: "Scholastic Corporation"
+
 
 Library.create name: "JOCO Library", location: "Overland Park, KS"
 Library.create name: "Fountain Hill Library", location: "Phoenix, AZ"
