@@ -39,14 +39,14 @@ gem "haml"
 # Easy erb to HAML
 gem "haml-rails", "~> 2.0"
 
-#used for populating database
-gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+# used for populating database
+gem "faker", git: "https://github.com/faker-ruby/faker.git", branch: "master"
 
-#used to give Trestle admin pages search functionality
-gem 'trestle-search'
+# used to give Trestle admin pages search functionality
+gem "trestle-search"
 
-#used for public-facing search functionality
-gem 'ransack', github: 'activerecord-hackery/ransack'
+# used for public-facing search functionality
+gem "ransack", github: "activerecord-hackery/ransack"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -60,7 +60,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
-  #cleans up code
+  # cleans up code
   gem "standardrb"
 end
 
@@ -71,8 +71,6 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem "webdrivers"
 end
-
-
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

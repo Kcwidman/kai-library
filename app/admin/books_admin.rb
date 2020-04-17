@@ -18,6 +18,11 @@ Trestle.resource(:books) do
     column :subjects_list, sort: false
     column :publisher, sort: false
     column :price
+    column :cover, sort: false do |book|
+      if book.cover.attached?
+        link_to image_tag(main_app.rails_blob_url(book.cover), size: "20x30"), main_app.rails_blob_url(book.cover)
+      end
+    end
     column :created_at, align: :center
     actions
   end
@@ -28,8 +33,9 @@ Trestle.resource(:books) do
     text_field :title
     text_field :price
     collection_select :subject_ids, Subject.all, :id, :name, {}, multiple: true
-    select :publisher_id, Publisher.all 
+    select :publisher_id, Publisher.all
     text_area :description
+    file_field :cover
   end
 
   # By default, all parameters passed to the update and create actions will be

@@ -23,12 +23,9 @@ publishers = [
 ]
 
 (1..5).each do |i|
-  Book.create(title: "Book ##{i}", price: 9.99, description: "From seed", subjects: [subjects[i-1]], publisher_id: [publishers[i-1]])
+  Book.create(title: "Book ##{i}", price: 9.99, description: "From seed", subjects: [subjects[i - 1]], publisher_id: [publishers[i - 1]])
 end
-
-
 
 Library.create name: "JOCO Library", location: "Overland Park, KS"
 Library.create name: "Fountain Hill Library", location: "Phoenix, AZ"
 Library.create name: "Indian Creek Library", location: "Olathe, KS"
-

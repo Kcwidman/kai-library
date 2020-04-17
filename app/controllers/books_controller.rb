@@ -1,5 +1,4 @@
 class BooksController < ApplicationController
-  
   def index
     @books_count = Book.count
     @q = Book.ransack(params[:q])

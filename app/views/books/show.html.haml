@@ -1,42 +1,46 @@
-%h1.my-3.text-center= @book.title
-%p
-  %strong Price:
-  -if @book.price
-    $#{@book.price}
-  -else
-    = "\"Priceless\""
-  %br
-  %strong Subjects:
-  -if @book.subjects.any?
-    - @book.subjects.all.each do |c|
-      = link_to c.name, subject_path(c)
-  -else
-    = "No Subject"
-  %br
-  %strong Created Date:
-  = @book.created_at
-  %br
-%strong Description: 
-%hr
-%p= @book.description
-%hr
-
-%strong Copies in the system: 
-= @book.copies.count
-%br
-%strong Libraries with this book: 
--if @book.libraries.any?
-  - @book.libraries.distinct.each do |c|
-    %li
-      =c.name
-      \:
-      -if c.copies.where("book_id = ? AND checked_out = ?", @book.id, false)
-        =pluralize(c.copies.where("book_id = ? AND checked_out = ?", @book.id, false).count , "copy")
-        in stock
-        
--else
-  None in stock
-.mt-4
-  = link_to 'Back', books_path, :class => "btn btn-primary btn-sm text-light mr-3"
-  = link_to 'Edit', edit_book_path(@book), :class => "btn btn-primary btn-sm text-light mr-3"
-  = link_to 'Delete', book_path(@book), method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-primary btn-sm text-light mr-3"
+.row
+  .col.my-3.mr-3
+    %h1= @book.title
+    %p
+      %strong Price:
+      -if @book.price
+        $#{@book.price}
+      -else
+        = "\"Priceless\""
+      %br
+      %strong Subjects:
+      -if @book.subjects.any?
+        - @book.subjects.all.each do |c|
+          = link_to c.name, subject_path(c)
+      -else
+        = "No Subject"
+      %br
+      %strong Created Date:
+      = @book.created_at
+      %br
+    %strong Description: 
+    %hr
+    %p= @book.description
+    %hr
+    
+    %strong Copies in the system: 
+    = @book.copies.count
+    %br
+    %strong Libraries with this book: 
+    -if @book.libraries.any?
+      - @book.libraries.distinct.each do |c|
+        %li
+          =c.name
+          \:
+          -if c.copies.where("book_id = ? AND checked_out = ?", @book.id, false)
+            =pluralize(c.copies.where("book_id = ? AND checked_out = ?", @book.id, false).count , "copy")
+            in stock
+            
+    -else
+      None in stock
+    .mt-4
+      = link_to 'Back', books_path, :class => "btn btn-primary btn-sm text-light mr-3"
+      = link_to 'Edit', edit_book_path(@book), :class => "btn btn-primary btn-sm text-light mr-3"
+      = link_to 'Delete', book_path(@book), method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-primary btn-sm text-light mr-3"
+  .col.mt-3.ml-3.text-center
+    =image_tag(@book.cover, size: "400x600")
