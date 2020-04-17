@@ -21,7 +21,7 @@ Trestle.resource(:subjects) do
   #
   # form do |subject|
   #   text_field :name
-  
+
   #   row do
   #     col { datetime_field :updated_at }
   #     col { datetime_field :created_at }

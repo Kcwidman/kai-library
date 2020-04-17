@@ -25,7 +25,7 @@ Trestle.resource(:copies) do
   form do |copy|
     text_field :condition
     check_box :checked_out
-  
+
     select :book_id, Book.all
     select :library_id, Library.all
   end

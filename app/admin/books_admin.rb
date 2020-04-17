@@ -33,7 +33,7 @@ Trestle.resource(:books) do
     text_field :title
     text_field :price
     collection_select :subject_ids, Subject.all, :id, :name, {}, multiple: true
-    select :publisher_id, Publisher.all 
+    select :publisher_id, Publisher.all
     text_area :description
     file_field :cover
   end
